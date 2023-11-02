@@ -9,11 +9,13 @@ import AddCoffe from './components/AddCoffe.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>
+    element: <App></App>,
+    loader: () => fetch('http://localhost:5000/coffe')
   },
   {
-    path: "/update",
-    element: <UpdateCoffe></UpdateCoffe>
+    path: "/update/:id",
+    element: <UpdateCoffe></UpdateCoffe>,
+    loader: ({ params }) => fetch(`http://localhost:5000/coffe/${params.id}`)
   },
   {
     path: "/add",
